@@ -1,0 +1,306 @@
+/* Multi Timer sidebar */
+
+.mt-view {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	padding: 12px 12px 32px;
+	overflow-y: auto;
+}
+
+.mt-header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.mt-header-title h2 {
+	margin: 0 0 2px;
+	font-size: 1.25em;
+}
+
+.mt-header-title p {
+	margin: 0;
+}
+
+.mt-muted {
+	color: var(--text-muted);
+	font-size: var(--font-ui-smaller);
+}
+
+.mt-header-actions {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.mt-icon-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	border-radius: var(--radius-s);
+	background: transparent;
+	color: var(--text-muted);
+	cursor: pointer;
+}
+
+.mt-icon-button:hover {
+	background: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+
+/* Add form */
+
+.mt-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 12px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	background: var(--background-secondary);
+}
+
+.mt-fields {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 8px;
+}
+
+.mt-field {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+	font-size: var(--font-ui-smaller);
+	color: var(--text-muted);
+}
+
+.mt-field input {
+	width: 100%;
+	padding: 4px 6px;
+	text-align: center;
+	font-variant-numeric: tabular-nums;
+}
+
+.mt-form-hint {
+	margin: -2px 0 0;
+	color: var(--text-faint);
+	font-size: var(--font-ui-smaller);
+}
+
+.mt-add-button {
+	width: 100%;
+}
+
+/* Timer list */
+
+.mt-list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.mt-card {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 10px 12px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	background: var(--background-primary);
+	transition:
+		opacity 120ms ease,
+		border-color 120ms ease,
+		box-shadow 120ms ease;
+}
+
+.mt-card.is-running {
+	border-color: var(--interactive-accent);
+}
+
+.mt-card.is-finished {
+	border-color: var(--color-green);
+	background: var(--background-modifier-success);
+}
+
+.mt-card.is-dragging {
+	opacity: 0.45;
+}
+
+.mt-card.mt-drop-before {
+	box-shadow: 0 -2px 0 0 var(--interactive-accent);
+}
+
+.mt-card.mt-drop-after {
+	box-shadow: 0 2px 0 0 var(--interactive-accent);
+}
+
+.mt-card-header {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.mt-drag-handle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	padding: 2px;
+	border-radius: var(--radius-s);
+	color: var(--text-faint);
+	cursor: grab;
+}
+
+.mt-drag-handle:hover {
+	background: var(--background-modifier-hover);
+	color: var(--text-muted);
+}
+
+.mt-drag-handle:active {
+	cursor: grabbing;
+}
+
+.mt-drag-handle svg {
+	width: 16px;
+	height: 16px;
+}
+
+.mt-name {
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: 2px 4px;
+	border: 1px solid transparent;
+	border-radius: var(--radius-s);
+	font-weight: 600;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	outline: none;
+	cursor: text;
+}
+
+.mt-name:hover {
+	background: var(--background-modifier-hover);
+}
+
+.mt-name:focus {
+	background: var(--background-primary);
+	border-color: var(--interactive-accent);
+}
+
+.mt-status {
+	flex: 0 0 auto;
+	padding: 1px 7px;
+	border-radius: 999px;
+	background: var(--background-modifier-hover);
+	color: var(--text-muted);
+	font-size: var(--font-ui-smaller);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.mt-card.is-running .mt-status {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+}
+
+.mt-card.is-finished .mt-status {
+	background: var(--color-green);
+	color: var(--text-on-accent);
+}
+
+.mt-display {
+	font-family: var(--font-monospace);
+	font-size: 2em;
+	font-weight: 700;
+	line-height: 1.1;
+	text-align: center;
+	letter-spacing: 0.04em;
+	font-variant-numeric: tabular-nums;
+}
+
+.mt-card.is-finished .mt-display {
+	color: var(--color-green);
+}
+
+.mt-progress {
+	height: 4px;
+	border-radius: 999px;
+	background: var(--background-modifier-border);
+	overflow: hidden;
+}
+
+.mt-progress-fill {
+	height: 100%;
+	width: 0;
+	border-radius: inherit;
+	background: var(--interactive-accent);
+	transition: width 250ms linear;
+}
+
+.mt-card.is-finished .mt-progress-fill {
+	background: var(--color-green);
+}
+
+.mt-controls {
+	display: grid;
+	grid-template-columns: 1.2fr 1fr 1fr;
+	gap: 6px;
+}
+
+.mt-controls button {
+	padding: 5px 8px;
+	font-size: var(--font-ui-small);
+}
+
+.mt-delete {
+	color: var(--text-error);
+}
+
+.mt-delete:hover {
+	background: var(--background-modifier-error);
+}
+
+/* Empty state */
+
+.mt-empty {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	padding: 28px 16px;
+	border: 1px dashed var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	text-align: center;
+	color: var(--text-muted);
+}
+
+.mt-empty p {
+	margin: 0;
+}
+
+.mt-empty-icon {
+	color: var(--text-faint);
+}
+
+.mt-empty-icon svg {
+	width: 28px;
+	height: 28px;
+}
+
+.is-hidden {
+	display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.mt-card,
+	.mt-progress-fill {
+		transition: none;
+	}
+}

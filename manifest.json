@@ -4,6 +4,6 @@
 	"version": "0.1.0",
 	"minAppVersion": "1.5.0",
 	"description": "Run independent timers in the sidebar with custom names, drag-to-reorder, generated chimes, and saved state.",
-	"author": "nil",
+	"author": "neocrz",
 	"isDesktopOnly": false
 }
